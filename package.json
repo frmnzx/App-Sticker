@@ -1,0 +1,12 @@
+{
+  "name": "sticker-wa",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "echo Build complete"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/core": "^7.0.0"
+  }
+}
