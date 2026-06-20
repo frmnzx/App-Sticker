@@ -1,27 +1,17 @@
-workflows:
+set -e
 
-  android-workflow:
+echo "Installing dependencies..."
+npm install
 
-    name: Android Build
+echo "Ensuring Capacitor CLI exists..."
+npm install @capacitor/core @capacitor/cli @capacitor/android
 
-    max_build_duration: 60
+echo "Checking Capacitor version..."
+npx cap --version
 
-    environment:
-      node: latest
+echo "Syncing Capacitor..."
+npx cap sync android
 
-    scripts:
-
-      - npm install
-
-      - npm install @capacitor/core
-      - npm install @capacitor/android
-
-      - npx cap add android || true
-
-      - npx cap sync android
-
-      - cd android
-      - ./gradlew assembleDebug
-
-    artifacts:
-      - android/app/build/outputs/**/*.apk
+echo "Building APK..."
+cd android
+./gradlew assembleDebug
